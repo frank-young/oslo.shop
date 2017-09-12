@@ -1,5 +1,5 @@
 <?php
-
+use EasyWeChat\Foundation\Application;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Wechat'], function() {
-  Route::any('/wechat', 'WechatController@serve');
+Route::group(['middleware' => ['web'],'namespace' => 'Wechat'], function() {
+  Route::any('/notify', 'WechatController@notify');
+  Route::get('/token', 'WechatController@token');
+  Route::get('/wxauth', 'WechatController@wxauth');
+  Route::any('/serve', 'WechatController@serve');
+});
+
+Route::get("/oauth/openwechat/getUrl", function(){
+
+});
+Route::get("/examples/oauth_callback", function(){
+  
 });

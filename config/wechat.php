@@ -24,12 +24,12 @@ return [
     /**
      * 开放平台第三方平台配置信息
      */
-    // 'open_platform' => [
-    //     'app_id'  => env('WECHAT_OPEN_PLATFORM_APPID', ''),
-    //     'secret'  => env('WECHAT_OPEN_PLATFORM_SECRET', ''),
-    //     'token'   => env('WECHAT_OPEN_PLATFORM_TOKEN', ''),
-    //     'aes_key' => env('WECHAT_OPEN_PLATFORM_AES_KEY', ''),
-    // ],
+    'open_platform' => [
+        'app_id'  => env('WECHAT_OPEN_PLATFORM_APPID', ''),
+        'secret'  => env('WECHAT_OPEN_PLATFORM_SECRET', ''),
+        'token'   => env('WECHAT_OPEN_PLATFORM_TOKEN', ''),
+        'aes_key' => env('WECHAT_OPEN_PLATFORM_AES_KEY', ''),
+    ],
 
     /**
      * 小程序配置信息
@@ -51,7 +51,7 @@ return [
             'middleware' => null,
             'as' => 'easywechat::',
         ],
-        'open_platform_serve_url' => 'open-platform-serve', // 开放平台服务URL
+        'open_platform_serve_url' => env('WECHAT_OPEN_PLATFORM_SERVE_URL', 'open-platform-serve'),  // 开放平台服务URL
     ],
 
     /*
@@ -73,11 +73,11 @@ return [
      * scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
      * callback：OAuth授权完成后的回调页地址(如果使用中间件，则随便填写。。。)
      */
-    // 'oauth' => [
-    //     'only_wechat_browser' => false,
-    //     'scopes'   => array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_userinfo'))),
-    //     'callback' => env('WECHAT_OAUTH_CALLBACK', '/examples/oauth_callback.php'),
-    // ],
+    'oauth' => [
+        'only_wechat_browser' => false,
+        'scopes'   => array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_login'))),
+        'callback' => env('WECHAT_OAUTH_CALLBACK', '/examples/oauth_callback'),
+    ],
 
     /*
      * 微信支付
